@@ -44,7 +44,7 @@ docker compose up
 
 ## Email Templates
 
-In the server.js you can find the actual implementation of this at this [switch case](https://github.com/shubhiscoding/Notification_App/blob/9ed34f11d88042f766e7cecb2eccea71fd451fb5/Emailserver.js#L123)
+In the server.js you can find the actual implementation of this at this [switch case](https://github.com/shubhiscoding/Notification_App/blob/a9e2b6511e323dd27f0bbbbdc1bf021916af2263/EmailServer.js#L123)
 
 ### 1. New Service Request
 - **Subject**: "New Service Request Posted"
