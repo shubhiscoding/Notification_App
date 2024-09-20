@@ -1,0 +1,9 @@
+{
+    "type": "service-request-approved",
+    "emails": ["provider@example.com"],
+    "data": {
+        "user1": "Jane Smith",
+        "serviceId": "67890",
+        "serviceTitle": "Logo Design"
+    }
+}

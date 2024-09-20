@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: "localstack_main"
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - DEBUG=${DEBUG:-0}
+      - SERVICES=sqs, ses
+      - DEFAULT_REGION=us-west-2
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - app-network
+
+  notification-app:
+    image: notification-app:latest
+    container_name: "notification_app"
+
+    depends_on:
+      - localstack
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
