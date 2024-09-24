@@ -3,7 +3,7 @@ const {
     ReceiveMessageCommand,
     DeleteMessageCommand,
 } = require("@aws-sdk/client-sqs");
-const { SESClient, SendEmailCommand, VerifyEmailAddressCommand } = require("@aws-sdk/client-ses");
+const aws = require('aws-sdk');
 const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
@@ -11,14 +11,18 @@ const Handlebars = require('handlebars');
 
 dotenv.config();
 
-const sesClient = new SESClient({
+// Update AWS credentials and region for aws-sdk
+aws.config.update({
     endpoint: process.env.AWS_ENDPOINT,
     region: process.env.AWS_REGION,
     credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     },
 });
+
+// Initialize SES using aws-sdk
+const ses = new aws.SES();
 
 const sqsClient = new SQSClient({
     endpoint: process.env.AWS_ENDPOINT,
@@ -34,10 +38,10 @@ const email_queue = process.env.EMAIL_SERVICE_SQS;
 // Function to verify the email address before sending the email
 async function verifyEmail(email) {
     try {
-        const command = new VerifyEmailAddressCommand({
+        const params = {
             EmailAddress: email,
-        });
-        const response = await sesClient.send(command);
+        };
+        const response = await ses.verifyEmailAddress(params).promise();
         console.log("Email verification initiated:", response);
     } catch (error) {
         console.error("Error verifying email:", error);
@@ -51,7 +55,7 @@ function loadTemplate(templateName) {
     return Handlebars.compile(templateContent);
 }
 
-// Function to send the email
+// Function to send the email using aws-sdk SES
 async function sendEmail(emailData) {
     const template = loadTemplate(emailData.templateName);
     const htmlContent = template(emailData.templateData);
@@ -74,8 +78,7 @@ async function sendEmail(emailData) {
     };
 
     try {
-        const command = new SendEmailCommand(input);
-        const response = await sesClient.send(command);
+        const response = await ses.sendEmail(input).promise();
         console.log("Email sent successfully:", response.MessageId);
     } catch (error) {
         console.error("Error sending email:", error);
