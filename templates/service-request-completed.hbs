@@ -4,64 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Request Completed – Time to Withdraw Your Earnings!</title>
-    <style>
-        body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-      }
-      /* Group 1 */
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .header {
-        color: white;
-        padding: 10px;
-        text-align: center;
-        border-bottom: 0.2px solid rgba(205, 204, 204, 0.4); 
-      }
-      .content {
-        background-color: white;
-        padding: 20px 25px;        
-      }
-      .button {
-        display: inline-block;
-        background-color: #8a70ff;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-      .footer {
-        text-align: center;
-        font-size: 0.8em;
-        margin-top: 20px;
-      }
-      .btn-container {
-        text-align: center;
-        text-decoration: none;
-        padding-right: 20px;
-        padding-left: 20px;
-      }
-    </style>
 </head>
-<body>
-    <div class="container">
-      <div class="header">
-        <img src="../assets/gibwork.jpg" alt="Logo"/>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="color: white; padding: 10px; text-align: center; border-bottom: 0.2px solid rgba(205, 204, 204, 0.4);">
+        <img src="https://gibwork-media.s3.amazonaws.com/gibwork.jpg" alt="Logo"/>
       </div>
-        <div class="content">
+        <div style="background-color: white; padding: 20px 25px;">
             <h2>Service Request Completed – Withdraw Your Funds Now!</h2>
             <p>Hi {{username}},</p>
             <p>Congratulations! The service "{{serviceTitle}}" has been successfully completed. You can now withdraw your earnings to your wallet.</p>
             <p>Thank you for trusting GIBWork with your service needs!</p>
-            <p class="btn-container">
-            <a href="{{viewServiceLink}}" class="button">View Service</a>
+            <p style="text-align: center; padding-right: 20px; padding-left: 20px;">
+                <a href="{{viewServiceLink}}" style="display: inline-block; background-color: #8a70ff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View Service</a>
             </p>
         </div>
-        <div class="footer">
+        <div style="text-align: center; font-size: 0.8em; margin-top: 20px;">
             <p>To report any bugs, get help, or give feedback join us on discord: <a href="https://discord.com/invite/G54VHcuHS">https://discord.com/invite/G54VHcuHS</a></p>
         </div>
     </div>
