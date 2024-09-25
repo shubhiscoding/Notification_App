@@ -48,7 +48,7 @@ const sendTelegramMessage = async (text, videoUrl, linkUrl = null) => {
 const Task_Created_Queue_url = process.env.MY_TASK_CREATED_SQS;
 const Task_Paid_Queue_url = process.env.MY_TASK_PAID_SQS;
 const sqsClient = new SQSClient({
-    endpoint: process.env.AWS_ENDPOINT,
+    endpoint: process.env.AWS_ENDPOINT_SQS,
     region: process.env.AWS_REGION,
     credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,

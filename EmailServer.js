@@ -13,7 +13,7 @@ dotenv.config();
 
 // Update AWS credentials and region for aws-sdk
 aws.config.update({
-  endpoint: process.env.AWS_ENDPOINT,
+  endpoint: process.env.AWS_ENDPOINT_SES,
   region: process.env.AWS_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -23,7 +23,7 @@ aws.config.update({
 const ses = new aws.SES();
 
 const sqsClient = new SQSClient({
-  endpoint: process.env.AWS_ENDPOINT,
+  endpoint: process.env.AWS_ENDPOINT_SQS,
   region: process.env.AWS_REGION,
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
