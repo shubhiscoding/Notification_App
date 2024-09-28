@@ -127,7 +127,8 @@ function parseMessage(response) {
       templateName = "new-service-request";
       templateData = {
         username: response.data.username,
-                viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+        serviceTitle: response.data.serviceTitle,
+        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
       };
       break;
     case "service-request-approved":
