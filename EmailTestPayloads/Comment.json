@@ -1,0 +1,10 @@
+{
+    "type": "new-comment-on-service",
+    "emails": ["provider@example.com"],
+    "data": {
+        "username": "testUser",
+        "user1": "Test User",
+        "serviceId": "67890",
+        "serviceTitle": "Some service"
+    }
+}

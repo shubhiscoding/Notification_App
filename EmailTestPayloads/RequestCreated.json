@@ -2,6 +2,7 @@
     "type": "new-service-request",
     "emails": ["user@example.com"],
     "data": {
+      "username": "JohnDoe",
       "user1": "John Doe",
       "serviceId": "12345",
       "serviceTitle": "Website Design"

@@ -2,6 +2,7 @@
   "type": "service-request-completed",
   "emails": ["client@example.com"],
   "data": {
+    "username": "AlexJohnson",
     "user1": "Alex Johnson",
     "serviceId": "24680",
     "serviceTitle": "Content Writing"

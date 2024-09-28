@@ -98,7 +98,7 @@ async function receiveAndProcessSQSMessage(queue_url) {
       const response = JSON.parse(message.Body);
 
       // First verify the email address
-      await verifyEmail("thatweb3guyy@gmail.com");
+      await verifyEmail(process.env.SENDER_EMAIL);
 
       const emailData = parseMessage(response);
       // Then send the email
@@ -126,7 +126,7 @@ function parseMessage(response) {
       subject = "New Service Request Posted";
       templateName = "new-service-request";
       templateData = {
-        username: response.data.user1,
+        username: response.data.username,
                 viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
       };
       break;
@@ -134,7 +134,7 @@ function parseMessage(response) {
       subject = "Your Service Request Has Been Approved!";
       templateName = "service-request-approved";
       templateData = {
-        username: response.data.user1,
+        username: response.data.username,
         serviceTitle: response.data.serviceTitle,
         viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
       };
@@ -143,7 +143,25 @@ function parseMessage(response) {
       subject = "Service Request Completed - Time to Withdraw Your Earnings!";
       templateName = "service-request-completed";
       templateData = {
-        username: response.data.user1,
+        username: response.data.username,
+        serviceTitle: response.data.serviceTitle,
+        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+      };
+      break;
+    case "service-request-rejected":
+      subject = "Service Request Rejected";
+      templateName = "service-request-rejected";
+      templateData = {
+        username: response.data.username,
+        serviceTitle: response.data.serviceTitle,
+        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+      };
+      break;
+    case "new-comment-on-service":
+      subject = "New Comment on Your Service";
+      templateName = "new-comment-on-service";
+      templateData = {
+        username: response.data.username,
         serviceTitle: response.data.serviceTitle,
         viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
       };

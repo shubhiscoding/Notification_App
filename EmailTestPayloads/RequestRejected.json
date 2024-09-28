@@ -1,0 +1,10 @@
+{
+    "type": "service-request-rejected",
+    "emails": ["provider@example.com"],
+    "data": {
+        "username": "randomUser",
+        "user1": "Random User",
+        "serviceId": "67890",
+        "serviceTitle": "Some Work"
+    }
+}
