@@ -128,7 +128,7 @@ function parseMessage(response) {
       templateData = {
         username: response.data.username,
         serviceTitle: response.data.serviceTitle,
-        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+        viewServiceLink: `${process.env.WEBSITE_URL}/services/${response.data.serviceId}`
       };
       break;
     case "service-request-approved":
@@ -137,7 +137,7 @@ function parseMessage(response) {
       templateData = {
         username: response.data.username,
         serviceTitle: response.data.serviceTitle,
-        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+        viewServiceLink: `${process.env.WEBSITE_URL}/services/${response.data.serviceId}`
       };
       break;
     case "service-request-completed":
@@ -146,7 +146,7 @@ function parseMessage(response) {
       templateData = {
         username: response.data.username,
         serviceTitle: response.data.serviceTitle,
-        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+        viewServiceLink: `${process.env.WEBSITE_URL}/services/${response.data.serviceId}`
       };
       break;
     case "service-request-rejected":
@@ -155,7 +155,7 @@ function parseMessage(response) {
       templateData = {
         username: response.data.username,
         serviceTitle: response.data.serviceTitle,
-        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+        viewServiceLink: `${process.env.WEBSITE_URL}/services/${response.data.serviceId}`
       };
       break;
     case "new-comment-on-service":
@@ -164,7 +164,7 @@ function parseMessage(response) {
       templateData = {
         username: response.data.username,
         serviceTitle: response.data.serviceTitle,
-        viewServiceLink: `${process.env.WEBSITE_URL}/service/${response.data.serviceId}`
+        viewServiceLink: `${process.env.WEBSITE_URL}/services/${response.data.serviceId}`
       };
       break;
     default:
